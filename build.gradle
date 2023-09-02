@@ -44,12 +44,20 @@ subprojects {
 }
 
 def determinePatchVersion() {
-    def tagInfo = new ByteArrayOutputStream()
-    exec {
-        commandLine 'git', 'describe', '--tags'
-        standardOutput = tagInfo
-    }
-    tagInfo = tagInfo.toString()
+    // get the name of the last tag
+    try {
+        def tagInfo = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'describe', '--tags'
+            standardOutput = tagInfo
+        }
+        tagInfo = tagInfo.toString()
 
-    return tagInfo.contains('-') ? tagInfo.split("-")[1] : 0
+        if (!tagInfo.contains('-')) {
+            return 0
+        }
+        return tagInfo.split("-")[1]
+    } catch (Exception ignored) {
+        return 0
+    }
 }
