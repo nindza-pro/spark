@@ -60,9 +60,6 @@ public class MinestomCommandSender extends AbstractCommandSender<CommandSender> 
 
     @Override
     public boolean hasPermission(String permission) {
-        if (this.delegate instanceof ConsoleSender) {
-            return true;
-        }
-        return this.delegate.hasPermission(permission);
+        return true;
     }
 }
