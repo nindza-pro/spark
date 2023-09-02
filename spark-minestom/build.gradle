@@ -9,7 +9,8 @@ tasks.withType(JavaCompile) {
 
 dependencies {
     implementation project(':spark-common')
-    compileOnly 'com.github.Minestom.Minestom:Minestom:master-SNAPSHOT'
+    compileOnly 'dev.hollowcube:minestom-ce:e9d0098418'
+    compileOnly 'dev.hollowcube:minestom-ce-extensions:1.2.0'
     implementation 'com.google.guava:guava:19.0'
 }
 
